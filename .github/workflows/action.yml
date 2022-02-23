@@ -1,11 +1,6 @@
 name: C/C++ CI
 
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - '.github/workflows/**'
-      - '**/calculusTest.cpp'
   pull_request:
     branches: [ main ]
     paths-ignore:
