@@ -145,7 +145,7 @@ protected:
         {
             sharedName + "test normal 3 ", 
             isClose(mySqrt(10), sqrt(11)),
-            true,
+            false,
             "sqrt(10) should not be close to sqrt(11). Maximum difference: " + std::to_string(EPSILON)+ "\n"
         },
         {
