@@ -65,25 +65,25 @@ protected:
               sharedName + "test normal 1", 
               isClose(myCos(0), cos(0)), 
               true, 
-              "Cos(0) should be close to 1.0 \n"
+              "cos(0) should be close to 1.0 \n"
           },
           {
               sharedName + "test normal 2", 
               isClose(myCos(PI_TEST/4), cos(PI_TEST/4)), 
               true, 
-              "Cos(PI/4) should be close to" + std::to_string(cos(PI_TEST/4)) + " \n"
+              "cos(PI/4) should be close to" + std::to_string(cos(PI_TEST/4)) + " \n"
           },
           {
               sharedName + "test opposite angle", 
               isClose(myCos(-1 * PI_TEST/3), cos(PI_TEST/3)), 
               true, 
-              "Cos(-1 * PI/3) be should close to " + std::to_string(cos(PI_TEST/3)) + "\n"
+              "cos(-1 * PI/3) be should close to cos(PI/3)"
           },
           {
               sharedName + "test cos(60) and cos(30)", 
               isClose(myCos(PI_TEST/3), cos(PI_TEST/6)), 
               false, 
-              "Cos(PI/3) should not be close to " + std::to_string(cos(PI_TEST/6)) + "\n"
+              "cos(PI/3) should not be close to cos(PI/6)\n"
           },
       };
       runTestLoop(cosTestCases, testSize);
@@ -110,14 +110,14 @@ protected:
           {
               sharedName + "supplementary angles", 
               isClose(mySin(PI_TEST - PI_TEST/3), sin(PI_TEST/3)), 
-              false,
-              "sin(PI - PI/3) should not be close to " + std::to_string(sin(PI_TEST/3)) + "\n"
+              true,
+              "sin(PI - PI/3) should be close to sin(PI/3)\n"
           },
           {
               sharedName + "test sin(60) and sin(30)", 
               isClose(mySin(PI_TEST/3), sin(PI_TEST/6)), 
               false, 
-              "sin(PI/3) should not be close to " + std::to_string(sin(PI_TEST/6)) + "\n"
+              "sin(PI/3) should not be close to sin(PI/6)\n"
           },
       };
       runTestLoop(sinTestCases, testSize);
