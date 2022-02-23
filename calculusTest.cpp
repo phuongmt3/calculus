@@ -124,7 +124,7 @@ protected:
     //   exit(0);
   }
   void testExit(void){
-      exit(0)
+      exit(0);
   }
 
 };
