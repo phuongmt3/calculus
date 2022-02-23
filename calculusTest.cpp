@@ -151,7 +151,7 @@ protected:
         {
             sharedName + "test normal 4 ", 
             isClose(mySqrt(100), sqrt(100)),
-            false,
+            true,
             "sqrt(100) must be 10\n"
         },
 
