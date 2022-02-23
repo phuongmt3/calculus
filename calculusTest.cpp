@@ -57,67 +57,69 @@ protected:
 
   void testMyCos(void){
       int testSize = 4;
-      TestStruct testCases[testSize]  = 
+      std::string sharedName = '[Cos] ';
+      TestStruct cosTestCases[testSize]  = 
       {
           {
-              "test normal 1", 
+              sharedName + "test normal 1", 
               isClose(myCos(0), cos(0)), 
               true, 
               "Cos(0) should be close to 1.0 \n"
           },
           {
-              "test normal 2", 
+              sharedName + "test normal 2", 
               isClose(myCos(PI_TEST/4), cos(PI_TEST/4)), 
               true, 
               "Cos(PI/4) should be close to" + std::to_string(cos(PI_TEST/4)) + " \n"
           },
           {
-              "test opposite angle", 
+              sharedName + "test opposite angle", 
               isClose(myCos(-1 * PI_TEST/3), cos(PI_TEST/3)), 
               true, 
               "Cos(-1 * PI/3) be should close to " + std::to_string(cos(PI_TEST/3)) + "\n"
           },
           {
-              "test cos(60) and cos(30)", 
+              sharedName + "test cos(60) and cos(30)", 
               isClose(myCos(PI_TEST/3), cos(PI_TEST/6)), 
               false, 
               "Cos(PI/3) should not be close to " + std::to_string(cos(PI_TEST/6)) + "\n"
           },
       };
-      runTestLoop(testCases, testSize);
+      runTestLoop(cosTestCases, testSize);
       exit(0);
   }
 
   void testMySin(void){
       int testSize = 4;
-      TestStruct testCases[testSize]  = 
+       std::string sharedName = '[Sin] ';
+      TestStruct sinTestCases[testSize]  = 
       {
           {
-              "test normal 1", 
+              sharedName + "test normal 1", 
               isClose(mySin(0), sin(0)), 
               true, 
               "sin(0) should be close to 0.0 \n"
           },
           {
-              "test normal 2", 
+              sharedName + "test normal 2", 
               isClose(mySin(PI_TEST/4), sin(PI_TEST/4)), 
               true, 
               "sin(0) should be close to" + std::to_string(sin(PI_TEST/4)) +  " \n"
           },
           {
-              "supplementary angles", 
+              sharedName + "supplementary angles", 
               isClose(mySin(PI_TEST - PI_TEST/3), sin(PI_TEST/3)), 
               false,
               "sin(PI - PI/3) should not be close to " + std::to_string(sin(PI_TEST/3)) + "\n"
           },
           {
-              "test sin(60) and sin(30)", 
+              sharedName + "test sin(60) and sin(30)", 
               isClose(mySin(PI_TEST/3), sin(PI_TEST/6)), 
               false, 
               "sin(PI/3) should not be close to " + std::to_string(sin(PI_TEST/6)) + "\n"
           },
       };
-      runTestLoop(testCases, testSize);
+      runTestLoop(sinTestCases, testSize);
       exit(0);
   }
 
