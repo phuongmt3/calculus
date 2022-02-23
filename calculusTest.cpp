@@ -44,7 +44,7 @@ void runTestLoop(TestStruct testCases[], int testSize){
 class Test
 {
   CPPUNIT_TEST_SUITE(Test);
-  CPPUNIT_TEST(testHelloWorld);
+  CPPUNIT_TEST(testMyCos);
   CPPUNIT_TEST_SUITE_END();
 
 public:
