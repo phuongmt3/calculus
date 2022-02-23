@@ -47,6 +47,7 @@ class Test: public CPPUNIT_NS::TestCase
   CPPUNIT_TEST_SUITE(Test);
   CPPUNIT_TEST(testMyCos);
   CPPUNIT_TEST(testMySin);
+  CPPUNIT_TEST(testExit);
   CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -57,7 +58,7 @@ protected:
 
   void testMyCos(void){
       int testSize = 4;
-      std::string sharedName = '[Cos] ';
+      std::string sharedName = "[Cos] ";
       TestStruct cosTestCases[testSize]  = 
       {
           {
@@ -86,12 +87,12 @@ protected:
           },
       };
       runTestLoop(cosTestCases, testSize);
-      exit(0);
+    //   exit(0);
   }
 
   void testMySin(void){
       int testSize = 4;
-       std::string sharedName = '[Sin] ';
+      std::string sharedName = "[Sin] ";
       TestStruct sinTestCases[testSize]  = 
       {
           {
@@ -120,7 +121,10 @@ protected:
           },
       };
       runTestLoop(sinTestCases, testSize);
-      exit(0);
+    //   exit(0);
+  }
+  void testExit(void){
+      exit(0)
   }
 
 };
