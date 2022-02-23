@@ -41,7 +41,7 @@ void runTestLoop(TestStruct testCases[], int testSize){
     }
 }
 
-class Test
+class Test: public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test);
   CPPUNIT_TEST(testMyCos);
