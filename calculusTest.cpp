@@ -102,7 +102,7 @@ protected:
               "test normal 2", 
               isClose(mySin(PI_TEST/4), sin(PI_TEST/4)), 
               true, 
-              "sin(0) should be close to" ++ std::to_string(sin(PI_TEST/4)) +  " \n"
+              "sin(0) should be close to" + std::to_string(sin(PI_TEST/4)) +  " \n"
           },
           {
               "supplementary angles", 
