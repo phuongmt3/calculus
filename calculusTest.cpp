@@ -29,7 +29,7 @@ bool isClose(double a, double b)
 void runTestLoop(TestStruct testCases[], int testSize){
     int i;
     for (i = 0; i< testSize; i++){
-        std::cout << testCases[i].testName + ': '
+        std::cout << testCases[i].testName + ': ';
         if (testCases[i].result == testCases[i].expected)
         {
             std::cout << "PASSED \n";
