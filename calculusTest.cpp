@@ -23,7 +23,7 @@ struct TestStruct
 
 bool isClose(double a, double b)
 {
-    return fabs(a - b) < EPSILON;
+    return fabs(a - b) <= EPSILON;
 }
 
 void runTestLoop(TestStruct testCases[], int testSize){
@@ -48,6 +48,7 @@ class Test: public CPPUNIT_NS::TestCase
   CPPUNIT_TEST(testMyCos);
   CPPUNIT_TEST(testMySin);
   CPPUNIT_TEST(testExit);
+  CPPUNIT_TEST(testMySqrt);
   CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -58,7 +59,7 @@ protected:
 
   void testMyCos(void){
       int testSize = 4;
-      std::string sharedName = "[Cos] ";
+      std::string sharedName = "[Cos test] ";
       TestStruct cosTestCases[testSize]  = 
       {
           {
@@ -92,7 +93,7 @@ protected:
 
   void testMySin(void){
       int testSize = 4;
-      std::string sharedName = "[Sin] ";
+      std::string sharedName = "[Sin test] ";
       TestStruct sinTestCases[testSize]  = 
       {
           {
@@ -123,6 +124,36 @@ protected:
       runTestLoop(sinTestCases, testSize);
     //   exit(0);
   }
+
+  void testMySqrt(void){
+      int testSize = 4;
+      std::string sharedName = "[Sqrt test] ";
+      TestStruct sinTestCases[testSize]  = 
+      {
+          {
+              sharedName + "test normal 1", 
+              isClose(mySqrt(4), 2.0), 
+              true, 
+              "sqrt(4) should be 2 \n"
+          },
+          {
+              sharedName + "test normal 2", 
+              isClose(mySqrt(10), sqrt(10)),  
+              true,
+              "sqrt(10) should be close to " + + std::to_string(sqrt(10)) +  " \n"
+          },
+          {
+              sharedName + "test input ", 
+              isClose(mySqrt(10), sqrt(12)),
+              false,
+              "sqrt(10) should not be close to sqrt(12)\n"
+          }
+      };
+      runTestLoop(sinTestCases, testSize);
+    //   exit(0);
+  }
+
+
   void testExit(void){
       exit(0);
   }
