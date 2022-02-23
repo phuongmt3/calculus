@@ -140,7 +140,7 @@ protected:
               sharedName + "test normal 2", 
               isClose(mySqrt(10), sqrt(10)),  
               true,
-              "sqrt(10) should be close to " + + std::to_string(sqrt(10)) +  " \n"
+              "sqrt(10) should be close to " + std::to_string(sqrt(10)) +  " \n"
           },
           {
               sharedName + "test input ", 
