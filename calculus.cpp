@@ -28,7 +28,7 @@ double myCos(double x) {
         ans += operand;
         operand *= -squareX / ((2*i-1) * (2*i));
     }
-    return 1.0;
+    return ans;
 }
 
 /***
