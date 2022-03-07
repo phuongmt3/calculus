@@ -6,65 +6,81 @@ using std::string;
 using std::cout;
 using std::endl;
 using std::stod;
-
-const double PI = 3.14159265359;
-const double PI_2 = 2 * PI;
-unsigned int MAX_LOOP = 20;
+const double epsilon = 0.000001;
+double factorial(double number)
+{
+    if (number<=1)
+    {
+        return 1;
+    }
+    else return number*factorial(number-1);
+}
 
 double mySin(double x);
 double myCos(double x);
 double mySqrt(double x);
 
 /***
-    Maclaurin series:
-    cos(x) = 1 - x^2/2! + x^4/4! - ...
+    Args:
+        x (double): a number
+    Returns:
+        double: cosine of x
 ***/
-double myCos(double x) {
-    x -= (double) ((int) (x / PI_2)) * PI_2;
-    double squareX = x * x;
-    double ans = 0;
-    double operand = 1;
-    for (int i = 1; i < MAX_LOOP; ++i) {
-        ans += operand;
-        operand *= -squareX / ((2*i-1) * (2*i));
+double myCos(double x) 
+{
+    double result = 0;
+    double k = 0;
+    while (abs(((1/factorial(2*k))*pow(-1,k)*pow(x,2*k))) > epsilon)
+    {
+        result += ((1/factorial(2*k))*pow(-1,k)*pow(x,2*k));
+        k++;
     }
-    return ans;
+    
+    return result;
 }
 
 /***
-    Maclaurin series:
-    sin(x) = x - x^3/3! + x^5/5! - ...
+    Args:
+        x (double): a number
+    Returns:
+        double: sine of x
 ***/
 double mySin(double x)
 {
-    x -= (double) ((int) (x / PI_2)) * PI_2;
-    double squareX = x * x;
-    double ans = 0;
-    double operand = x;
-    for (int i = 1; i < MAX_LOOP; ++i) {
-        ans += operand;
-        operand *= -squareX / ((2*i) * (2*i+1));
+    double result = 0;
+    double k=1; int pos = 1;
+    while (abs((1/factorial(k))*pow(x,k))>epsilon)
+    {
+        if (pos%2!=0)
+        {
+            result+=(1/factorial(k))*pow(x,k);
+        }
+        else result-=(1/factorial(k))*pow(x,k);
+        k+=2; pos++;
     }
-    return ans;
+    return result;
 }
 
+
 /***
-    sqrt(a) (a >= 0) based on Newton method:
-    - x_0 = (1+a)/2
-    - x_i+1 = (x_i * x_i +  a) / (2 * x_i) 
+    Args:
+        x (double): a number
+    Returns:
+        double: square root of x
 ***/
 double mySqrt(double x) {
+    double initialGuess = x/2;
     if (x < 0) {
         cout << "Invalid argument" << endl;
         exit(1);
     }
-    if (x == 0) {
-        return 0;
+    else
+    {
+        while (abs(( (initialGuess*initialGuess - x) / (2*initialGuess) )) > epsilon)
+        {
+            /* code */
+            initialGuess = initialGuess - ((initialGuess*initialGuess - x)/(2*initialGuess));
+        }
     }
-    double preAns = 0, ans = (1+x)/2; //First approximation
-    while (ans != preAns) {
-        preAns = ans;
-        ans = (preAns + x/preAns) / 2;    //Do NOT use: ans = (preAns * preAns + x) / (2 * preAns); 
-    }
-    return ans;
+    return initialGuess;
 }
