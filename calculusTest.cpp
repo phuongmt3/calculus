@@ -61,6 +61,12 @@ protected:
   void testMyCos(void){
       int testSize = 4;
       std::string sharedName = "[Cos test] ";
+      std::cout << "myCos: " << myCos(PI_TEST/4) << "\n";
+      std::cout << "Cos: " << cos(PI_TEST/4) << "\n";
+      std::cout << "fabs: " << fabs(cos(PI_TEST/4) - myCos(PI_TEST/4)) << "\n";
+      std::cout << "isclose: " << isClose(cos(PI_TEST/4),myCos(PI_TEST/4)) << "\n";
+      
+      
       TestStruct cosTestCases[testSize]  = 
       {
         {
