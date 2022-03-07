@@ -36,6 +36,7 @@ void runTestLoop(TestStruct testCases[], int testSize){
         }
         else
         {
+            std::cout << testCases[i].result << "test";
             std::cout << testCases[i].errorMsg;
             exit(1);
         }
